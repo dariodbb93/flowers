@@ -14,10 +14,13 @@
                         <p class="card-text"> Autore: {{ $upload->autore }}</p>
                         <p class="card-text">{{ $upload->descrizione }}</p>
                         <form action="{{ route('destroy', compact('upload')) }}" method="POST">
+                            @guest
+                            @else
                             @csrf
                             @method('delete')
                             <button class="btn btn-danger mt-1" type="submit"> Elimina </button>
                         </form>
+                        @endguest
                     </div>
                 </div>
             </div>
